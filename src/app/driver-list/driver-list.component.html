@@ -1,0 +1,41 @@
+<div class="col-md-6" *ngIf="this.bookingDetails.sourceAddress && this.bookingDetails.destinationAddress">
+    Booking From <strong>{{ this.bookingDetails.sourceAddress }}</strong> to <strong>{{ this.bookingDetails.destinationAddress }}</strong>
+</div>
+<div fxLayoutAlign="flex-end">
+    <mat-form-field fxFlex="40">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div>
+<mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pricing">
+        <mat-header-cell *matHeaderCellDef>Pricing(Rs/Km)</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.pricing }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="vehicle">
+        <mat-header-cell *matHeaderCellDef>Vehicle</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.vehicle }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="languages">
+        <mat-header-cell *matHeaderCellDef>Languages Known</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <div *ngFor="let item of element.languages; last as isLast">
+                <span>{{ item }}</span><span *ngIf="!isLast">,&nbsp;</span>
+            </div>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let element"><button type="button" class="btn btn-primary btn-sm">Book</button></mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
