@@ -1,0 +1,36 @@
+<section fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxFlex="400px" class="mt-5">
+        <mat-card-title fxLayoutAlign="center">Signup</mat-card-title>
+        <mat-card-content fxLayoutAlign="center">
+            <form #loginForm="ngForm">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="col-md-12 pt-1">
+                                <label>Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="user.name" name="username" [required]="true">
+                            </div>
+                            <div class="col-md-12 pt-1">
+                                <label>Phone Number</label>
+                                <input type="text" class="form-control" [(ngModel)]="user.number" name="number" required>
+                            </div>
+                            <div class="col-md-12 pt-1">
+                                <label>Email</label>
+                                <input type="text" class="form-control" [(ngModel)]="user.email" name="email" required>
+                            </div>
+                            <div class="col-md-12 pt-1">
+                                <label>Password</label>
+                                <input type="text" class="form-control" [(ngModel)]="user.password" name="password" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="col-md-12 book-button">
+                <button type="button" class="btn btn-primary btn-md btn-block" [disabled]="loginForm.invalid" (click)="onLogin()">Login</button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</section>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-driver-list',
@@ -13,7 +14,7 @@ export class DriverListComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   bookingDetails = {};
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
     this.getCurrentBooking();
@@ -26,6 +27,11 @@ export class DriverListComponent implements OnInit {
 
   doFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  onDriverBooking(driver: any) {
+    console.log(driver);
+    this.router.navigate(['/aq-index/booking']);
   }
 
 }

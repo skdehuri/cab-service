@@ -2,38 +2,41 @@
     <mat-card fxFlex.xs="100%" fxFlex="400px" class="mt-5">
         <mat-card-title fxLayoutAlign="center">Book A Taxi!</mat-card-title>
         <mat-card-content fxLayoutAlign="center">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="col-md-12 pt-1">
-                            <label>From</label>
-                            <app-search-input (setAddress)="getSourceAddress($event)" setDefaultAddress="true"
-                                placeType="geocode" isDisabled="true"></app-search-input>
-                        </div>
-                        <div class="col-md-12 pt-1">
-                            <label>To</label>
-                            <app-search-input (setAddress)="getDestinationAddress($event)" placeType="geocode">
-                            </app-search-input>
-                        </div>
-                        <div class="col-md-12 pt-1">
-                            <label>Depart Date</label>
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Enter Date" [minDate]="minDate" name="dp"
-                                    [(ngModel)]="book.journeyDate" ngbDatepicker #d="ngbDatepicker">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                                        <i class="fa fa-calendar"></i>
-                                    </button>
+            <form #bookingForm="ngForm">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="col-md-12 pt-1">
+                                <label>From</label>
+                                <app-search-input (setAddress)="getSourceAddress($event)" setDefaultAddress="true"
+                                    placeType="geocode" isDisabled="true"></app-search-input>
+                            </div>
+                            <div class="col-md-12 pt-1">
+                                <label>To</label>
+                                <app-search-input (setAddress)="getDestinationAddress($event)" 
+                                placeType="geocode" isRequired="true" required>
+                                </app-search-input>
+                            </div>
+                            <div class="col-md-12 pt-1">
+                                <label>Depart Date</label>
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="Enter Date" [minDate]="minDate" name="dp"
+                                        [(ngModel)]="book.journeyDate" ngbDatepicker #d="ngbDatepicker" required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </mat-card-content>
         <mat-card-actions>
             <div class="col-md-12 book-button">
-                <button type="button" class="btn btn-primary btn-md btn-block" (click)="onBooking()">Book</button>
+                <button type="button" class="btn btn-primary btn-md btn-block" [disabled]="bookingForm.invalid" (click)="onBooking()">Book</button>
             </div>
         </mat-card-actions>
     </mat-card>

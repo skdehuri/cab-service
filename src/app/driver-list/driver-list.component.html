@@ -33,7 +33,7 @@
 
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
-        <mat-cell *matCellDef="let element"><button type="button" class="btn btn-primary btn-sm">Book</button></mat-cell>
+        <mat-cell *matCellDef="let element"><button type="button" class="btn btn-primary btn-sm" (click)="onDriverBooking(element)">Book</button></mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

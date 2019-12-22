@@ -8,6 +8,7 @@ import {} from 'googlemaps';
 export class SearchInputComponent implements OnInit, AfterViewInit {
   @Input() placeType: string;
   @Input() isDisabled: string;
+  @Input() isRequired: string;
   @Input() setDefaultAddress: string;
   @Output() setAddress: EventEmitter<any> = new EventEmitter();
   @ViewChild('address', {static: false}) address: any;

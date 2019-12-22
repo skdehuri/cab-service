@@ -13,6 +13,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { SearchInputComponent } from './common/search-input/search-input.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DriverListComponent } from './driver-list/driver-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { FinalBookingComponent } from './final-booking/final-booking.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { DriverListComponent } from './driver-list/driver-list.component';
     SidenavListComponent,
     SearchInputComponent,
     DriverListComponent,
+    LoginComponent,
+    FinalBookingComponent,
   ],
   imports: [
     BrowserModule,

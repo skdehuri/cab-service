@@ -22,6 +22,10 @@ export class DataService {
     return { ...this.currentBooking };
   }
 
+  isCurrentBooking() {
+    return this.currentBooking != null;
+  }
+
   getAvailableDrivers() {
     return this.availableDrivers.slice();
   }
